@@ -3,6 +3,7 @@
 # Expects hosts.txt and commands.txt in same directory
 # hosts.txt = list of hosts to run commands on (one per line)
 # commands.txt = commands to run on each host (one per line)
+# For sudo, requiretty must be disabled in visudo, or try deploy_channel.rb
 #
 
 require 'rubygems'

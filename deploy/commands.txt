@@ -1,1 +1,2 @@
-sudo yum update -y
+uptime
+w
