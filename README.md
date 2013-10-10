@@ -4,6 +4,6 @@ This is a collection of random sysadmin-y things. Part stuff I made, part stuff 
 
 Since this repo is just my personal junk collection, I've highlighted a few things that could be interested to the random passeryby here:
 
-1)  troubleshooting.md - my Linux troubleshooting guide - https://github.com/irlrobot/sysadmin/blob/master/README.md <br>
+1)  troubleshooting.md - my Linux troubleshooting guide - https://github.com/irlrobot/sysadmin/blob/master/troubleshooting.md <br>
 2)  bashrc and vimrc - my bash and vim config files (make sure to rename them with a leading '.')<br>
 3)  deploy.rb - a simple way to run one or more commands on one or more hosts (dead simple bash via ssh using pub key auth) - https://github.com/irlrobot/sysadmin/blob/master/deploy/deploy.rb<br>
