@@ -1,2 +1,0 @@
-#!/usr/bin/ruby
-puts rand(100)+1
