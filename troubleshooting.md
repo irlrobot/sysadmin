@@ -130,3 +130,5 @@ cleanup <br>
 		
 create superuser that can connect from anywhere <br>
 ````grant ALL PRIVILEGES on *.* TO 'user'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;````
+
+##MySQL-Credits
