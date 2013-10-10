@@ -1,12 +1,6 @@
 #Intro
 This is a collection of howto's, tips, tricks, and tools for troubleshooting Linux issues.  Some of it is from personal experience, but most of it is found from other blogs, forums, and the like.  Credit and citations are given at the bottom of each section where information may have come from.  If I didn't thank you personally when I found your tip/trick/tool then I'll say it here.  Thanks!
 
-#Tools
-Make sure these are available:<br>
-sysstat (this package will include iostat and vmstat)<br>
-strace<br>
-tcpdump<br>
-
 #CPU
 ````nrpoc```` <br>
 See number of processors
