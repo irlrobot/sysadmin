@@ -11,39 +11,30 @@
 # commands.txt
 # Each command should be on one line, commands are run sequentially not in parrallel
 # For example "sudo yum update -y"
+# For sudo, requiretty must be disabled in visudo, or try deploy.rb
 #
 
 require 'rubygems'
 require 'net/ssh'
 
-def ssh_exec(hostname, username, command)
-  ssh = Net::SSH.start(hostname, username)
-  ssh.open_channel do |channel|
-      channel.request_pty do |c, success|
-        if success
-          c.exec(command)
-          c.on_data do |ch, data|
-            puts data
-          end
-        else
-          puts "Failed to connect!"
-        end
-      end
-    end
-  ssh.close()
-end
-
 File.open("hosts.txt").each_line do |host|
   username = host.split[0]
   hostname = host.split[1]
-  puts "--------------------------------------------------"
-  puts "--------------------------------------------------"
+
   puts "Deploying to #{hostname}"
+
+  ssh = Net::SSH.start(hostname, username)
 
   File.open("commands.txt").each_line do |command|
     puts "--------------------------------------------------"
-    puts command  
+    puts command
     puts "--------------------------------------------------"
-    ssh_exec(hostname, username, command)
-  end 
+    ssh.exec!(command.chomp) do |ch, stream, cmd|
+      puts cmd
+    end
+  end
+
+  puts "--------------------------------------------------"
+
+  ssh.close()
 end
