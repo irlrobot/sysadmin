@@ -2,19 +2,27 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'slim'
+require 'sass'
+
+get '/styles.css' do
+  scss :styles
+end
 
 get '/' do
-  erb :home
+  slim :home
 end
 
 get '/about' do
-  erb :about
+  @title = "All About This Website"
+  slim :about
 end
 
 get '/contact' do
-  erb :contact
+  @title = "Contact Us"
+  slim :contact
 end
 
 not_found do
-  erb :not_found
+  slim :not_found
 end
