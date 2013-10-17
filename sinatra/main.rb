@@ -6,47 +6,77 @@ require 'sinatra/reloader' if development?
 require 'slim'
 require 'sass'
 
+configure :development do
+  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+end
+
+configure do
+  enable :sessions
+  set :username, 'frank'
+  set :password, 'sinatra'
+end
+
 get '/styles.css' do
   scss :styles
 end
 
-get '/' do
+get '/login' do
+  slim :login
+end
+
+get '/logout' do
+  session.clear
+  redirect to('/')
+end
+
+get '/?' do
   slim :home
 end
 
-get '/about' do
+get '/about/?' do
   @title = "All About This Website"
   slim :about
 end
 
-get '/contact' do
+get '/contact/?' do
   @title = "Contact Us"
   slim :contact
 end
 
-get '/songs' do
+get '/songs/?' do
   @songs = Song.all
   slim :songs
 end
 
-get '/songs/new' do
+get '/songs/new/?' do
+  halt(401,'Not Authorized') unless session[:admin]
   @song = Song.new
   slim :new_song
 end
 
-get '/songs/:id' do
+get '/songs/:id/?' do
   @song = Song.get(params[:id])
   slim :show_song
 end
 
-get '/songs/:id/edit' do
+get '/songs/:id/edit/?' do
+  halt(401,'Not Authorized') unless session[:admin]
   @song = Song.get(params[:id])
   slim :edit_song
 end
 
-post '/songs' do
+post '/songs/?' do
   song = Song.create(params[:song])
   redirect to("/songs/#{song.id}")
+end
+
+post '/login' do
+  if params[:username] == settings.username && params[:password] == settings.password
+    session[:admin] = true
+    redirect to('/songs')
+  else
+    slim :login
+  end
 end
 
 put '/songs/:id' do
