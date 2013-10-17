@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/local/bin/ruby
 
 def doLookup(device)
   puts `nslookup #{device}`  
