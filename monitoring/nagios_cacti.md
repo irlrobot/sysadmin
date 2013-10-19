@@ -64,6 +64,13 @@ Add a device/host
 Goto Data Sources add for this template and new host
 Under Custom Data add the hostname/IP in the IP Address box
 
-Also add data source for Advanced Ping template too if used
 ==check_http.pl credit
 http://blog.tersmitten.nl/cacti-http-response-time.html
+
+=Cacti advanced ping
+Install template
+replace /usr/shar/cacti/scripts/ss_fping.php with the one in the archive
+
+Add data source for host/device
+==advanced ping credit
+http://docs.cacti.net/usertemplate:graph:advanced_ping_alt
