@@ -76,7 +76,6 @@ http://blog.tersmitten.nl/cacti-http-response-time.html
 
 =Cacti advanced ping
 Install template
-replace /usr/shar/cacti/scripts/ss_fping.php with the one in the archive
 
 Add data source for host/device
 ==advanced ping credit
