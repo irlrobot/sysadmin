@@ -4,6 +4,13 @@ Add epel repo
 yum -y install nagios nagios-plugins-all nagios-plugins-nrpe nrpe php httpd 
 htpasswd -c /etc/nagios/passwd nagiosadmin
 
+Change check_http command in objects/commands.cfg to look like
+# 'check_http' command definition
+define command{
+        command_name    check_http
+        command_line    $USER1$/check_http -H $HOSTADDRESS$ -f follow -t 60 $ARG1$
+        }
+
 ==Nagios Install Credit
 https://www.digitalocean.com/community/articles/how-to-install-nagios-on-centos-6
 
