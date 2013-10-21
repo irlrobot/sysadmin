@@ -1,6 +1,6 @@
 Add epel repo
 
-=Nagios
+#Nagios
 yum -y install nagios nagios-plugins-all nagios-plugins-nrpe nrpe php httpd 
 htpasswd -c /etc/nagios/passwd nagiosadmin
 
@@ -11,10 +11,10 @@ define command{
         command_line    $USER1$/check_http -H $HOSTADDRESS$ -f follow -t 60 $ARG1$
         }
 
-==Nagios Install Credit
+##Nagios Install Credit
 https://www.digitalocean.com/community/articles/how-to-install-nagios-on-centos-6
 
-=Cacti
+#Cacti
 yum -y install httpd httpd-devel mysql mysql-server php-mysql php-pear php-common php-gd php-devel php php-mbstring php-cli php-mysql php-snmp net-snmp-utils p net-snmp-libs php-pear-Net-SMTP rrdtool unzip cacti
 
 Setup mysql
@@ -47,10 +47,10 @@ setup iptables
 
 default cacti creds are admin/password
 
-==Cacti Install Credit
+##Cacti Install Credit
 http://forums.cacti.net/viewtopic.php?f=6&t=49363
 
-=Cacti check_http.pl
+#Cacti check_http.pl
 vi /usr/share/cacti/scripts/check_http.pl
 
 #!/usr/bin/env perl
@@ -71,12 +71,12 @@ Add a device/host
 Goto Data Sources add for this template and new host
 Under Custom Data add the hostname/IP in the IP Address box
 
-==check_http.pl credit
+##check_http.pl credit
 http://blog.tersmitten.nl/cacti-http-response-time.html
 
-=Cacti advanced ping
+#Cacti advanced ping
 Install template
 
 Add data source for host/device
-==advanced ping credit
+##advanced ping credit
 http://docs.cacti.net/usertemplate:graph:advanced_ping_alt
