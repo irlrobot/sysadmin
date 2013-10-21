@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/env ruby
 #
 # Expects hosts.txt and commands.txt in same directory
 # gem net-ssh should be installed
