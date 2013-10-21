@@ -1,11 +1,11 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/env ruby
 
 def doLookup(device)
   puts `nslookup #{device}`  
 end
 
 def doPing(device)
-  puts `ping -c 2 #{device}`
+  puts `ping -c 3 #{device}`
 end
 
 def doPortScan(device)
