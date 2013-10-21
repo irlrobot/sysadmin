@@ -11,6 +11,69 @@ define command{
         command_line    $USER1$/check_http -H $HOSTADDRESS$ -f follow -t 60 $ARG1$
         }
 
+##Sample Nagios config
+```
+define host{
+        use                             generic-host
+        host_name                       www.groupon.com
+        alias                           www.groupon.com
+        address                         www.groupon.com
+        max_check_attempts              5
+}
+
+define host{
+        use                             generic-host
+        host_name                       origin.groupon.com
+        alias                           origin.groupon.com
+        address                         origin.groupon.com
+        max_check_attempts              5
+}
+
+define host{
+        use                             generic-host
+        host_name                       api.groupon.com
+        alias                           api.groupon.com
+        address                         api.groupon.com
+        max_check_attempts              5
+}
+
+define service{
+        use                             generic-service
+        host_name                       www.groupon.com
+        service_description             HTTP
+        check_command                   check_http
+        notifications_enabled           0
+        }
+
+define service{
+        use                             generic-service
+        host_name                       origin.groupon.com
+        service_description             HTTP
+        check_command                   check_http
+        notifications_enabled           0
+}
+
+define service{
+        use                             generic-service
+        host_name                       api.groupon.com
+        service_description             HTTP
+        check_command                   check_http
+        notifications_enabled           0
+}
+
+define hostgroup{
+        hostgroup_name                  websites
+        alias                           Web Sites
+        members                         www.groupon.com,origin.groupon.com,api.groupon.com
+        }
+
+define servicegroup{
+        servicegroup_name               websites
+        alias                           Web Sites
+        members                         www.groupon.com,HTTP,origin.groupon.com,HTTP,api.groupon.com,HTTP
+}
+```
+
 ##Nagios Install Credit
 https://www.digitalocean.com/community/articles/how-to-install-nagios-on-centos-6
 
@@ -47,10 +110,7 @@ setup iptables
 
 default cacti creds are admin/password
 
-##Cacti Install Credit
-http://forums.cacti.net/viewtopic.php?f=6&t=49363
-
-#Cacti check_http.pl
+##Cacti check_http.pl
 vi /usr/share/cacti/scripts/check_http.pl
 
 #!/usr/bin/env perl
@@ -71,12 +131,15 @@ Add a device/host
 Goto Data Sources add for this template and new host
 Under Custom Data add the hostname/IP in the IP Address box
 
-##check_http.pl credit
+###check_http.pl credit
 http://blog.tersmitten.nl/cacti-http-response-time.html
 
-#Cacti advanced ping
+##Cacti advanced ping
 Install template
 
 Add data source for host/device
-##advanced ping credit
+###advanced ping credit
 http://docs.cacti.net/usertemplate:graph:advanced_ping_alt
+
+##Cacti Install Credit
+http://forums.cacti.net/viewtopic.php?f=6&t=49363
