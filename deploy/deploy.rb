@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 #
-# Expects hosts.txt and commands.txt in same directory
+# Specify a command followed by multiple hosts to
+# run that command on all the hosts.
+# Ex. ./deploy.rb uptime host1 host2 host3
+#
+# Otherwise deploy.rb expects hosts.txt and commands.txt in same directory
 # gem net-ssh should be installed
 #
 # hosts.txt
@@ -33,17 +37,27 @@ def ssh_exec(hostname, username, command)
   ssh.close()
 end
 
-File.open("hosts.txt").each_line do |host|
-  username = host.split[0]
-  hostname = host.split[1]
-  puts "--------------------------------------------------"
-  puts "--------------------------------------------------"
-  puts "Deploying to #{hostname}"
+if ARGV
+  current_user = ENV['USER']
+  command = ARGV[0]
+  hosts = ARGV[1..ARGV.length]
+  
+  hosts.each do |host|
+    ssh_exec(host, current_user, command)
+  end
+else
+  File.open("hosts.txt").each_line do |host|
+    username = host.split[0]
+    hostname = host.split[1]
+    puts "--------------------------------------------------"
+    puts "--------------------------------------------------"
+    puts "Deploying to #{hostname}"
 
-  File.open("commands.txt").each_line do |command|
-    puts "--------------------------------------------------"
-    puts command  
-    puts "--------------------------------------------------"
-    ssh_exec(hostname, username, command)
-  end 
+    File.open("commands.txt").each_line do |command|
+      puts "--------------------------------------------------"
+      puts command  
+      puts "--------------------------------------------------"
+      ssh_exec(hostname, username, command)
+    end 
+  end
 end
