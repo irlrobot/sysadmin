@@ -1,19 +1,25 @@
 #!/usr/bin/env ruby
 #
-# Specify a command followed by multiple hosts to
-# run that command on all the hosts.
-# Ex. ./deploy.rb uptime host1 host2 host3
+# Josh Campbell
+# https://github.com/irlrobot/
 #
-# Otherwise deploy.rb expects hosts.txt and commands.txt in same directory
-# gem net-ssh should be installed
+# This is v1.5
+#
+# deploy.rb sequentially runs commands on one or more hosts in the specified order.
+#
+# Specify a command followed by multiple hosts to run that command on all the hosts.
+# Example: ./deploy.rb uptime host1 host2 host3
+# Example: ./deploy.rb "sudo yum update -y" host1 host2 host3
+#
+# Otherwise deploy.rb expects hosts.txt and commands.txt in same directory to specify commands and hosts.
 #
 # hosts.txt
-# On each line put the username with access followed by a space and then the hostname
-# You should have public key authentication already setup on the host for the user specified
+# On each line put the username with access followed by a space and then the hostname.
+# You should have public key authentication already setup on the host for the user specified,
 # For example "josh splunk01.domain"
 #
 # commands.txt
-# Each command should be on one line, commands are run sequentially not in parrallel
+# Each command should be on one line, Commands are run sequentially not in parrallel (by design).
 # For example "sudo yum update -y"
 #
 
@@ -43,6 +49,10 @@ if ARGV
   hosts = ARGV[1..ARGV.length]
   
   hosts.each do |host|
+    puts "--------------------------------------------------"
+    puts "--------------------------------------------------"
+    puts "Deploying to #{host}"
+    puts "--------------------------------------------------"
     ssh_exec(host, current_user, command)
   end
 else
