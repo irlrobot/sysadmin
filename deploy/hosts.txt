@@ -1,2 +1,2 @@
-jocampbell usch1splunk01.group.on
+jcampbell splunk01.domain
 joshc fud
