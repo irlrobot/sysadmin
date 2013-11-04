@@ -6,4 +6,4 @@ defscrollback 1000
 
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%{.bW}%-w%{.gW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
+hardstatus string "%{.bW}%-w%{.cW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
