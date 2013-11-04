@@ -1,0 +1,6 @@
+shell -$SHELL
+startup_message off
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.bW}%-w%{.gW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
