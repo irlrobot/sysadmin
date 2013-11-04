@@ -1,5 +1,8 @@
+termcapinfo xterm* ti@:te@
 shell -$SHELL
 startup_message off
+
+defscrollback 1000
 
 hardstatus on
 hardstatus alwayslastline
