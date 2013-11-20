@@ -1,1 +1,0 @@
-sudo gem install sinatra sinatra-contrib slim sass sqlite3 data_mapper dm-sqlite-adapter bundler pg dm-postgres-adapter thin
