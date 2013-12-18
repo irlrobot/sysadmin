@@ -64,6 +64,11 @@ All UDP ports
 ````netstat -c```` <br>
 Print info continuously
 
+More random netstat wizardry:<br>
+````netstat -tan | grep ':443' | awk {'print $6'} | sort | uniq -c````<br>
+````sudo netstat -nap | grep -i time_wait | wc -l````<br>
+````sudo netstat -nap | grep -i close_wait | wc -l````<br>
+
 ````lsof | grep LISTEN```` <br>
 Also find things that may be listening...
 
@@ -85,10 +90,19 @@ Record the capture to a file
 ````tcpdump -i eth1 icmp```` <br>
 Specify a certain interface
 
+````sudo iftop -P -N -f 'dst port 443 or port 80 or port 81 or port 444 or port 445'````<br>
+Top for tcpdump
+
+````watch -d -n 2 "sudo ss -a -t -n state established | grep '80\\|81\\|443\\|444\\|445' | wc -l"````<br>
+Watch connections drain on a host when you remove from a load balancer.
+
 ##Networking-Credits
 http://www.thegeekstuff.com/2010/03/netstat-command-examples/ 
 
 #Storage
+````find . -mtime +7 | xargs du -ch````<br>
+Find all files last modified more than 7 days ago in the current directory and total up the used disk space.
+
 ````iostat -mdx 1```` <br>
 Show extended disk info in MB/s every second
 
@@ -111,6 +125,9 @@ Where PID is the process ID in question (ps aux | grep name).  What is the proce
 ````strace -ttT program/script```` <br>
 Run a trace on the program/script and output to the screen (redirect to a file is usually desired here).  Prefix line with time including microseconds and show the time spent in system calls.
 
+````sudo strace -e trace=network -p <PID> 2>&1 | grep IPADDR````<br>
+This is useful if you need to see if a PID is making connections to something it should or should not be.  For example, used this once to determine HAProxy was still connecting to an old IP after DNS was changed for a server.
+
 ##Strace-Credits
 http://www.hokstad.com/5-simple-ways-to-troubleshoot-using-strace<br>
 https://blogs.oracle.com/ksplice/entry/strace_the_sysadmin_s_microscope
@@ -132,3 +149,18 @@ create superuser that can connect from anywhere <br>
 ````grant ALL PRIVILEGES on *.* TO 'user'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;````
 
 ##MySQL-Credits
+
+#Git
+Get the last two commits
+````git log -n2 filename````<br>
+
+Merge someone's branch
+````git fetch all````<br>
+````git cherry-pick <commit SHA>````<br>
+````git reset --soft HEAD^````<br>
+````git commit -m "comment"````<br>
+````git pull --rebase && git push````<br>
+
+#Misc
+Find deleted but still open files
+````sudo lsof | awk '/deleted/ {sum+=$7} END {print sum}'````<br>
