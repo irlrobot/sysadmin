@@ -151,16 +151,16 @@ create superuser that can connect from anywhere <br>
 ##MySQL-Credits
 
 #Git
-Get the last two commits
-````git log -n2 filename````<br>
+Get the last two commits<br>
+````git log -n2 filename````
 
-Merge someone's branch
+Merge someone's branch<br>
 ````git fetch all````<br>
 ````git cherry-pick <commit SHA>````<br>
 ````git reset --soft HEAD^````<br>
 ````git commit -m "comment"````<br>
-````git pull --rebase && git push````<br>
+````git pull --rebase && git push````
 
 #Misc
-Find deleted but still open files
-````sudo lsof | awk '/deleted/ {sum+=$7} END {print sum}'````<br>
+Find deleted but still open files<br>
+````sudo lsof | awk '/deleted/ {sum+=$7} END {print sum}'````
