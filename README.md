@@ -6,5 +6,4 @@ Since this repo is just my personal junk collection, I've highlighted a few thin
 <ol>
 <li>troubleshooting.md - my Linux troubleshooting guide - https://github.com/irlrobot/sysadmin/blob/master/troubleshooting.md</li>
 <li>.bashrc and .vimrc - my bash and vim config files</li>
-<li>deploy.rb - a simple way to run one or more commands on one or more hosts (dead simple bash via ssh using pub key auth) - https://github.com/irlrobot/sysadmin/blob/master/deploy/deploy.rb</li>
 </ol>
