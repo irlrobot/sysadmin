@@ -3,7 +3,7 @@
 # Josh Campbell
 # https://github.com/irlrobot/
 #
-# This is v1.5
+# This is v1.0
 #
 # deploy.rb sequentially runs commands on one or more hosts in the specified order.
 #
@@ -43,17 +43,22 @@ def ssh_exec(hostname, username, command)
   ssh.close()
 end
 
-if ARGV
+if ARGV.size > 0
   current_user = ENV['USER']
   command = ARGV[0]
-  hosts = ARGV[1..ARGV.length]
+  hosts = ARGV[1..ARGV.size]
   
   hosts.each do |host|
     puts "--------------------------------------------------"
     puts "--------------------------------------------------"
     puts "Deploying to #{host}"
     puts "--------------------------------------------------"
-    ssh_exec(host, current_user, command)
+    begin
+      ssh_exec(host, current_user, command)
+      raise
+    rescue
+      puts "Can't connect to #{host}"
+    end
   end
 else
   File.open("hosts.txt").each_line do |host|
@@ -67,7 +72,12 @@ else
       puts "--------------------------------------------------"
       puts command  
       puts "--------------------------------------------------"
-      ssh_exec(hostname, username, command)
+      begin
+        ssh_exec(hostname, username, command)
+        raise
+      rescue
+        puts "Can't connect to #{host}"
+      end
     end 
   end
 end
