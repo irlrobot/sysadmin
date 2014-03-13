@@ -182,7 +182,7 @@ Branching Model
 http://www.userdel.com/post/77189389114/git-branching-model
 
 #Awk Wizardry
-Find 500's in an access log
+Find 500's in an access log<br>
 ````awk '{ if ($9 ~ /50/) print $1,$9}' /var/log/access_log````<br>
 ````awk '{ if ($11 == "500") print $0 }' /var/log/access_log````
 
