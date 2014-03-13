@@ -23,8 +23,7 @@ Top 5 processes
 ````top -b -n 1 | head -n 12  | tail -n 5````<br>
 Top process
 
-````htop````<br>
-A must - http://hisham.hm/htop/
+htop is a must - http://hisham.hm/htop/
 
 ##Load Average
 ````uptime```` <br>
