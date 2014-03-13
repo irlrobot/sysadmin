@@ -17,6 +17,15 @@ Check CPU usage every second
 ````top```` <br>
 See what's happening
 
+````ps -eo pcpu,pid,user,args | sort -k 1 -r | head -6````<br>
+Top 5 processes
+
+````top -b -n 1 | head -n 12  | tail -n 5````<br>
+Top process
+
+````htop````<br>
+A must - http://hisham.hm/htop/
+
 ##Load Average
 ````uptime```` <br>
 The 3 sets of numbers represent one, five and fifteen minute averages (in that order).
