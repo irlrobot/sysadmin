@@ -182,6 +182,11 @@ Merge someone's branch<br>
 Branching Model
 http://www.userdel.com/post/77189389114/git-branching-model
 
+#Awk Wizardry
+Find 500's in an access log
+````awk '{ if ($9 ~ /50/) print $1,$9}' /var/log/access_log````<br>
+````awk '{ if ($11 == "500") print $0 }' /var/log/access_log````
+
 #Misc
 Find deleted but still open files<br>
 ````sudo lsof | awk '/deleted/ {sum+=$7} END {print sum}'````
