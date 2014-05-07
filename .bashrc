@@ -4,16 +4,22 @@
 alias ll='ls -lah'
 alias vi='vim'
 alias gh='cd ~/Documents/github/'
-alias notes='cd ~/Dropbox/NOTES/'
+alias notes='subl ~/Dropbox/NOTES/'
 alias webs='ruby -run -e httpd . -p 8888'
 alias disk='du -sgcx * | sort -n'
 alias cpu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -6'
 alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias ecron='env EDITOR=vim crontab -e'
 
 #
 #history
 #
 export HISTSIZE=10000
+
+#
+# set sublime as editor
+#
+export EDITOR='subl -w'
 
 #
 #generate a random pass
@@ -62,13 +68,12 @@ ssh() {
   setscreentitletohost                                                                           
 }
 
+# bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
 #
 # path junk
 #
-
-#PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
-#export PATH="/usr/local/heroku/bin:$PATH"
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-PATH=$HOME/.rvm/bin:/usr/local/bin:/usr/local/heroku/bin:/Applications/Postgres93.app/Contents/MacOS/bin:~/bin/:$PATH
-export PATH=$PATH:~/railsbricks
+PATH=$HOME/.rvm/bin:/usr/local/bin:~/bin:$PATH
