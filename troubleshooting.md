@@ -17,6 +17,14 @@ Check CPU usage every second
 ````top```` <br>
 See what's happening
 
+````ps -eo pcpu,pid,user,args | sort -k 1 -r | head -6````<br>
+Top 5 processes
+
+````top -b -n 1 | head -n 12  | tail -n 5````<br>
+Top process
+
+htop is a must - http://hisham.hm/htop/
+
 ##Load Average
 ````uptime```` <br>
 The 3 sets of numbers represent one, five and fifteen minute averages (in that order).
@@ -99,7 +107,7 @@ Watch connections drain on a host when you remove from a load balancer.
 ##Networking-Credits
 http://www.thegeekstuff.com/2010/03/netstat-command-examples/ 
 
-#Storage
+#Storage/Disk
 ````find . -mtime +7 | xargs du -ch````<br>
 Find all files last modified more than 7 days ago in the current directory and total up the used disk space.
 
@@ -111,6 +119,15 @@ Measure performance by writing a 1GB file
 
 ````dd if=/dev/zero of=test bs=1G count=1 oflag=dsync```` <br>
 Same as above but using dsync skips cache
+
+````sudo du -scx * | sort -n````<br>
+Find biggest files in a directory
+
+````find . -mtime +30 | xargs du -ch````<br>
+Find size of files older than 30 days in a directory
+
+````sudo tar cvfz archive_name.tar.gz --remove-files files*````<br>
+Archive and compress files
 
 ##Storage-Credits
 http://www.thomas-krenn.com/en/wiki/Linux_I/O_Performance_Tests_using_dd
@@ -160,6 +177,14 @@ Merge someone's branch<br>
 ````git reset --soft HEAD^````<br>
 ````git commit -m "comment"````<br>
 ````git pull --rebase && git push````
+
+Branching Model
+http://www.userdel.com/post/77189389114/git-branching-model
+
+#Awk Wizardry
+Find 500's in an access log<br>
+````awk '{ if ($9 ~ /50/) print $1,$9}' /var/log/access_log````<br>
+````awk '{ if ($11 == "500") print $0 }' /var/log/access_log````
 
 #Misc
 Find deleted but still open files<br>
