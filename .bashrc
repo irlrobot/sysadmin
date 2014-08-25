@@ -1,11 +1,12 @@
 #
 #Aliases
 #
-alias ll='ls -lah'
+alias ll='ls -Glah'
 alias vi='vim'
 alias webs='ruby -run -e httpd . -p 8888'
 alias disk='du -sgcx * | sort -n'
 alias cpu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -6'
+alias curltime='curl -w "\n\ntime_namelookup: %{time_namelookup}\ntime_connect: %{time_connect}\ntime_appconnect: %{time_appconnect}\ntime_pretransfer: %{time_pretransfer}\ntime_redirect: %{time_redirect}\ntime_starttransfer: %{time_starttransfer}\n----------\ntime_total:  %{time_total}\n"'
 
 # helps if sublime is default editor
 alias ecron='env EDITOR=vim crontab -e'
