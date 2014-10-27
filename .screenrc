@@ -1,9 +1,11 @@
+# mouse scrolling
 termcapinfo xterm* ti@:te@
 shell -$SHELL
 startup_message off
 
 defscrollback 1000
 
+# status bar at the bottom
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.cW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
