@@ -7,6 +7,7 @@ defscrollback 1000
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.cW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
+#hardstatus string "%{.kW}%-w%{.rW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
 
 # replace Ctrl-A with Ctrl-O
 escape ^Oo
