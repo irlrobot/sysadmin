@@ -13,11 +13,12 @@ alias ecron='env EDITOR=vim crontab -e'
 
 # git goodies
 alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias gh='cd ~/Documents/github/'
+alias gh='cd ~/Documents/github/sre_dev/repos'
 alias gb='git branch'
 alias gm='git merge --no-ff'
 alias gco='git checkout'
 alias gs='git status'
+alias gp='git pull --rebase'
 
 #
 #history
@@ -76,6 +77,11 @@ ssh() {
   /usr/bin/ssh -A $inargs
   setscreentitletohost
 }
+
+#
+# ops-config autocomplete
+#
+source ~/Documents/github/sre_dev/repos/ops-config/bin/bash_complete_hostnames.sh
 
 #
 # path
