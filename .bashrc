@@ -25,7 +25,7 @@ alias gp='git pull --rebase'
 #
 export HISTSIZE=100000
 # avoid duplicates..
-export HISTCONTROL=ignoredups:erasedups  
+export HISTCONTROL=ignoredups:erasedups
 # append history entries..
 shopt -s histappend
 # After each command, save and reload history
@@ -34,7 +34,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 #
 # set sublime as editor
 #
-export EDITOR='subl -w'
+export EDITOR='atom --wait'
 
 #
 #generate a random pass
@@ -53,25 +53,25 @@ setscreentitletohost() {
   if [ "$TERM" == "screen" ]
     then
       echo -ne "\033k$HOSTNAME$\033\\"
-  fi                
-}                                                                                                       
+  fi
+}
 setscreentitletohost
 
-ssh() {                           
-  inargs="$@"                  
+ssh() {
+  inargs="$@"
   if [ "$TERM" == "screen" ]
-    then                
+    then
       host="${inargs#*@}"
       host="${host% *}"
       user="${inargs%@*}"
       user="${user#* }"
-    if [ "$user" == "root" ]                             
-      then       
+    if [ "$user" == "root" ]
+      then
         host="$host#"
     else
       host="$host$"
     fi
-  echo -ne "\033k$host\033\\"                     
+  echo -ne "\033k$host\033\\"
   fi
 
   /usr/bin/ssh -A $inargs
