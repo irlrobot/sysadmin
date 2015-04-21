@@ -1,15 +1,42 @@
-# mouse scrolling
+#
+# For OSX Scrolling
+#
 termcapinfo xterm* ti@:te@
+
+#
+# Other Settings
+#
 shell -$SHELL
 startup_message off
-
 defscrollback 1000
 
-# status bar at the bottom
+#
+# Hardstatus
+#
 hardstatus on
 hardstatus alwayslastline
+setenv PROMPT_COMMAND 'echo -ne "\033_`basename ${PWD}`\033\\"'
+# light colors
 hardstatus string "%{.bW}%-w%{.cW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
+# dark colors
 #hardstatus string "%{.kW}%-w%{.rW}%n %t%{-}%+w %= %{..Y} %m/%d %C%a "
 
-# replace Ctrl-A with Ctrl-O
+#
+# Replace Ctrl-A with Ctrl-O
+#
 escape ^Oo
+
+#
+# Bindings
+#
+bind ',' prev
+bind '.' next
+#bind E title 'testing'
+
+#
+# Default windows
+#
+#screen -t server
+#screen -t console
+#screen -t directory
+#select 0

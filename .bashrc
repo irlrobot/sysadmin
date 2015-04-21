@@ -7,8 +7,10 @@ alias webs='ruby -run -e httpd . -p 8888'
 alias disk='du -sgcx * | sort -n'
 alias cpu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -6'
 alias curltime='curl -w "\n\ntime_namelookup: %{time_namelookup}\ntime_connect: %{time_connect}\ntime_appconnect: %{time_appconnect}\ntime_pretransfer: %{time_pretransfer}\ntime_redirect: %{time_redirect}\ntime_starttransfer: %{time_starttransfer}\n----------\ntime_total:  %{time_total}\n"'
+alias fucking='sudo'
+export VMSIZE='auto'
 
-# helps if sublime is default editor
+# helps if gui text editor is default editor
 alias ecron='env EDITOR=vim crontab -e'
 
 # git goodies
@@ -19,6 +21,7 @@ alias gm='git merge --no-ff'
 alias gco='git checkout'
 alias gs='git status'
 alias gp='git pull --rebase'
+alias cb='git rev-parse --abbrev-ref HEAD'
 
 #
 #history
@@ -32,7 +35,7 @@ shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 #
-# set sublime as editor
+# set atom as editor
 #
 export EDITOR='atom --wait'
 
@@ -42,41 +45,19 @@ export EDITOR='atom --wait'
 randompass() {
   LANG=C
   local l=$1
-  [ “$l” == “” ] && l=12
+  [ “$l” == “” ] && l=20
   tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
 }
 
 #
-# screen tomfoolery for osx
+# change OSX bash prompt
 #
-setscreentitletohost() {
-  if [ "$TERM" == "screen" ]
-    then
-      echo -ne "\033k$HOSTNAME$\033\\"
-  fi
-}
-setscreentitletohost
+export PS1="[\\u@\h \\W]\\$ "
 
-ssh() {
-  inargs="$@"
-  if [ "$TERM" == "screen" ]
-    then
-      host="${inargs#*@}"
-      host="${host% *}"
-      user="${inargs%@*}"
-      user="${user#* }"
-    if [ "$user" == "root" ]
-      then
-        host="$host#"
-    else
-      host="$host$"
-    fi
-  echo -ne "\033k$host\033\\"
-  fi
-
-  /usr/bin/ssh -A $inargs
-  setscreentitletohost
-}
+#
+# change title to current directory
+#
+PROMPT_COMMAND='echo -ne "\033]0; ${PWD##*/}\007"'
 
 #
 # ops-config autocomplete
@@ -87,3 +68,6 @@ source ~/Documents/github/sre_dev/repos/ops-config/bin/bash_complete_hostnames.s
 # path
 #
 PATH=$HOME/.rvm/bin:/usr/local/bin:~/bin:$PATH
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
