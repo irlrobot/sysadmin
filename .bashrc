@@ -7,15 +7,19 @@ alias webs='ruby -run -e httpd . -p 8888'
 alias disk='du -sgcx * | sort -n'
 alias cpu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -6'
 alias curltime='curl -w "\n\ntime_namelookup: %{time_namelookup}\ntime_connect: %{time_connect}\ntime_appconnect: %{time_appconnect}\ntime_pretransfer: %{time_pretransfer}\ntime_redirect: %{time_redirect}\ntime_starttransfer: %{time_starttransfer}\n----------\ntime_total:  %{time_total}\n"'
-alias fucking='sudo'
+
+#
+# export some stuff
+#
 export VMSIZE='auto'
+export WCOLL=~/Desktop/hosts.txt
 
 # helps if gui text editor is default editor
 alias ecron='env EDITOR=vim crontab -e'
 
 # git goodies
 alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias gh='cd ~/Documents/github/sre_dev/repos'
+alias gh='cd ~/fedora_dev/repos'
 alias gb='git branch'
 alias gm='git merge --no-ff'
 alias gco='git checkout'
@@ -55,19 +59,6 @@ randompass() {
 export PS1="[\\u@\h \\W]\\$ "
 
 #
-# change title to current directory
-#
-PROMPT_COMMAND='echo -ne "\033]0; ${PWD##*/}\007"'
-
-#
-# ops-config autocomplete
-#
-source ~/Documents/github/sre_dev/repos/ops-config/bin/bash_complete_hostnames.sh
-
-#
 # path
 #
 PATH=$HOME/.rvm/bin:/usr/local/bin:~/bin:$PATH
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
