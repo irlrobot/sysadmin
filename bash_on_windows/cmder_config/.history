@@ -1,0 +1,92 @@
+npm-windows-upgrade
+cinst git.install
+npm-windows-upgrade
+cinst git.install
+cinst poshgit
+cinst git.install
+cinst Git-Credential-Manager-for-Windows
+cinst github
+cinst poshgit
+cinst github
+cinst poshgit
+cinst github
+git
+cinst ruby
+cinst ruby.devkit
+cinst python
+cinst easy.install
+pip
+cinst pip
+cinst python
+cinst pip
+pip
+cinst easy.install
+awscli
+cinst awstools.powershell
+cinst awscli
+less C:\ProgramData\chocolatey\logs\chocolatey.log
+python
+ruby --version
+cinst rvm
+cinst ruby2.devkit
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+bash
+ruby --version
+node --version
+kill /pid 1036
+kill 1036
+kill /help
+kill
+kill -l
+diskpart
+cinst venv
+cinst virtualenv
+virtualenv
+atom .
+atom .
+cp Dropbox\zshrc .
+manage-bde -status D:
+mkdir repos
+ll
+bashhome
+less C:\ProgramData\chocolatey\logs\chocolatey.log
+python
+ruby --version
+cinst rvm
+cinst ruby2.devkit
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+ruby --version
+node --version
+kill /pid 1036
+kill 1036
+kill /help
+kill
+kill -l
+cd D:\git
+cd ../
+ls
+cd D:\
+D:\
+d:
+cd git
+d:\git
+cd /d d:\git
+alias gh='cd /d d:\git'
+~/
+c:
+cd ~/
+cd ~\
+cd ~
+alias gh=cd /d d:\git
+alias
+gh
+alias ll=ls -la
+ll
+atom c:\tools\cmder\config
+atom C:\Users\joshcb\Dropbox
+gl
+which
+which python
+which python3
+bash
+bash
