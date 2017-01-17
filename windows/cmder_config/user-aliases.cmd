@@ -21,5 +21,5 @@ gco=git checkout
 gs=git status
 gp=git pull --rebase
 bashhome=cd C:\Users\joshcb\AppData\Local\Lxss\home\josh
-# mkvenv='virtualenv -p /usr/local/bin/python3 venv'
-# activate='source venv/bin/activate'
+::mkvenv='virtualenv -p /usr/local/bin/python3 venv'
+::activate='source venv/bin/activate'
