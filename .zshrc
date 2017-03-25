@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/USERNAME/.oh-my-zsh
+export ZSH=/Users/joshcb/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -103,15 +103,27 @@ alias gco='git checkout'
 alias gs='git status'
 alias gp='git pull --rebase'
 alias cb='git rev-parse --abbrev-ref HEAD'
+# other goodies
 alias icd='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias apb='cd ~/playbooks/'
 alias tf='cd ~/terraform/'
+alias bastion='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -A ec2-user@b.aws.userdel.com'
 alias docker_cleanup='docker rm `docker ps -aq` && docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 alias mkvenv3='virtualenv -p /usr/local/bin/python3 venv'
 alias mkvenv2='virtualenv -p /usr/local/bin/python2 venv'
 alias activate='source venv/bin/activate'
 alias edison='screen /dev/cu.usbserial-AJ035DQD 115200 -L'
 alias notes='atom ~/Dropbox/notes'
+alias cgui='ssh -N -L 13390:localhost:3389 joshcb.aka.corp.amazon.com'
+alias mc='sshfs joshcb@joshcb.aka.corp.amazon.com:/home/joshcb/ ~/remote_desktop -p 22 -o reconnect'
+alias uc='umount ~/remote_desktop'
+# less is more
+# Enable syntax-highlighting in less.
+# brew install source-highlight
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+export LESS=" -R "
+alias less='less -m -N -g -i -J --underline-special --SILENT'
+alias more='less'
 #
 # export some stuff
 #
