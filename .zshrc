@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/joshcb/.oh-my-zsh
+export ZSH=/Users/josh/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,7 +49,7 @@ ZSH_THEME="cloud"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(rails git ruby atom brew rvm aws cap gem git-extras history github jsontools osx sudo wd terraform)
+plugins=(git git-extras rvm history github jsontools osx sudo wd virtualenvwrapper)
 
 # User configuration
 
@@ -113,9 +113,10 @@ alias mkvenv3='virtualenv -p /usr/local/bin/python3 venv'
 alias mkvenv2='virtualenv -p /usr/local/bin/python2 venv'
 alias activate='source venv/bin/activate'
 alias edison='screen /dev/cu.usbserial-AJ035DQD 115200 -L'
-alias notes='atom ~/Dropbox/notes'
-alias cgui='ssh -N -L 13390:localhost:3389 joshcb.aka.corp.amazon.com'
-alias mc='sshfs joshcb@joshcb.aka.corp.amazon.com:/home/joshcb/ ~/remote_desktop -p 22 -o reconnect'
+alias notes='code ~/WorkDocs/notes ~/WorkDocs/docs'
+alias docs='code ~/WorkDocs/notes ~/WorkDocs/docs'
+alias cgui='ssh -N -L 13390:localhost:3389 josh.aka.corp.amazon.com'
+alias mc='sshfs josh@josh.aka.corp.amazon.com:/home/josh/ ~/remote_desktop -p 22 -o reconnect'
 alias uc='umount ~/remote_desktop'
 # less is more
 # Enable syntax-highlighting in less.
@@ -131,9 +132,8 @@ export VMSIZE='auto'
 export WCOLL=~/Desktop/hosts.txt
 export EDITOR='/usr/local/bin/atom --wait'
 export VMSIZE='auto'
-
 # Stuff
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-export NVM_DIR="/Users/joshcb/.nvm"
+export NVM_DIR="/Users/josh/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
